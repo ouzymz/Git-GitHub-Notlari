@@ -1,0 +1,7 @@
+$ git config user.name		(Usernamemini gösterir)
+
+$ git config --global user.name "Oguzhan Yilmaz"	(Usernamemini degistirme)
+
+$ git config --global user.email "oguzhanyilmaz@gmail.com"	(Email degistirme)
+
+	

@@ -1,0 +1,34 @@
+--Git, sürüm kontrol sistemi olarak bilinen ve bazen VCS olarak kısaltılan bir sistemdir.
+
+--Özetle, sürüm kontrolü, bir dosya kümesinde yapılan değişiklikleri zaman içinde takip etmeye ve yönetmeye yardımcı olan yazılımdır.
+
+--Eğer bir şeyleri bozarsak, önceki bir sürüme geri dönebiliriz.
+
+--Farklı sürümler arasındaki değişiklikleri, farklı dosyalar arasındaki değişiklikleri, farklı işbirlikçiler arasındaki değişiklikleri birleştirebiliriz.
+
+--Ve belki de en önemlisi, işbirliği yapabilir ve değişiklikleri paylaşabiliriz. Git, kullanıcılar arasında işbirliğini kolaylaştırır.
+
+--developerlar, akademisyenler, hatta bazı yazarlar bile git hubi ortak geliştirdikleri projelerde kullanir bkz. https://stackshare.io/git
+https://government.github.com/community/
+https://github.com/HoTT/book
+
+
+--Git ve GitHub arasındaki fark. Birbirleriyle yakından ilişkilidir, ancak aynı şey değillerdir.
+
+--Git: Git, bahsettiğimiz gibi bir sürüm kontrol yazılımıdır.
+
+Birinin makinesinde çalışır, benim dizüstü bilgisayarımda, sizin masaüstünüzde veya nerede olursa olsun, insanların bilgisayarlarında çalışır. Bir hesap için kaydolmanıza gerek yoktur.
+
+--GitHub ise bir web hizmettir. Ve yapısı gereği Git depolarını alır.
+
+
+--Özetle, Git yerelde çalışırken, GitHub projeleri bulutta paylaşır ve işbirliği yapma olanağı sunar. Bu kurs, önce Git'i öğretir ve daha sonra GitHub kullanımını kapsar.
+
+
+
+
+
+--Common early mistake;
+Herhangi bir dosya ve klasör ve değişiklikler, git'in takip ettiği bir projedeki bu dizin içinde gerçekleştirildiğinde, git bunları izleyecek ve değişiklik geçmişine kaydedecektir.
+
+Bir repo içinde var olan bir başka repo oluşturmak istemeyiz. Uyarı işareti yaparak bunu netleştirmek istedim. Repository'lerimizi ayrı tutmak istiyoruz ve mevcut bir repository içinde git init komutunu çalıştırmaktan kaçınmalıyız. Her ne kadar bu dünyanın sonu olmasa da, bazı noktalarda işler ters gidebilir. Git, bir dizinde olup biten her şeyi izlediği için, bu dizinlerden birinde git zaten başlatıldıysa, git git'i izliyor gibi bir durum ortaya çıkar ve işler karmaşıklaşır.
