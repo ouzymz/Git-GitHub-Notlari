@@ -36,4 +36,4 @@ Bir repo içinde var olan bir başka repo oluşturmak istemeyiz. Uyarı işareti
 
 --Commitleri atomik seviyede tutmak önemli. Her commit yapılan 1 konsept için olmalı. Her değişilik gibi değil ancak o konsepte yapılan bir değişiklik için commit atılmalı.
 
-deneme yapmaca!!
+deneme yapmaca!! Kraken denemesi yapılacak!!
