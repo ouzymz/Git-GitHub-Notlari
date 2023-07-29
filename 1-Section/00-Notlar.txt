@@ -32,3 +32,8 @@ Birinin makinesinde çalışır, benim dizüstü bilgisayarımda, sizin masaüst
 Herhangi bir dosya ve klasör ve değişiklikler, git'in takip ettiği bir projedeki bu dizin içinde gerçekleştirildiğinde, git bunları izleyecek ve değişiklik geçmişine kaydedecektir.
 
 Bir repo içinde var olan bir başka repo oluşturmak istemeyiz. Uyarı işareti yaparak bunu netleştirmek istedim. Repository'lerimizi ayrı tutmak istiyoruz ve mevcut bir repository içinde git init komutunu çalıştırmaktan kaçınmalıyız. Her ne kadar bu dünyanın sonu olmasa da, bazı noktalarda işler ters gidebilir. Git, bir dizinde olup biten her şeyi izlediği için, bu dizinlerden birinde git zaten başlatıldıysa, git git'i izliyor gibi bir durum ortaya çıkar ve işler karmaşıklaşır.
+
+
+--Commitleri atomik seviyede tutmak önemli. Her commit yapılan 1 konsept için olmalı. Her değişilik gibi değil ancak o konsepte yapılan bir değişiklik için commit atılmalı.
+
+deneme yapmaca!!
