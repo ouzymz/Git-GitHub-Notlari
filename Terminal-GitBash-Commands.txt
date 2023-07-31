@@ -1,0 +1,200 @@
+Terminal Crush Course: 
+
+GİT=======================
+
+start .  (dosyalari klasor halinde gosterir) 
+
+ls dosyaadi/ (ilgili dosya icerigini bash'e getirir)
+
+clear (bash ekranini temizler
+
+pwd (icinde oldugum klasoru getirir)
+
+cd (istedigim dosyaya gitmemi saglar)
+
+cd .. (ust dizin dosyasina doner, geri gider)
+
+touch dosyaadi.dosyauzantisi (yeni dosya acmani saglar)
+
+touch desktop/dosyaadi.dosyauzantisi (istedigin kalsor icine yeni dosya acmani sagls
+
+mkdir folderadi (istedigin yerde folder acmani saglar)
+
+mkdir folderadi1/ folderadi2/ (istedigin yerde birden fazla folder acmani saglar)
+
+rm dosyaadi.dosyauzantisi (file siler)
+
+rm -rf folderadi (folder siler)
+
+git config user.name		(Usernamemini gosterir)
+
+git config --global user.name "Oguzhan Yilmaz"	(Usernamemini degistirme)
+
+git config --global user.email "oguzhanyilmaz@gmail.com"	(Email degistirme)
+
+git init
+
+rm -rf .git (giti siler)
+
+git status (dosyadaki git durumunu kontrol etmek icin kullanilir)
+
+git log (commit listesini gosterir)
+
+git add filename (stagelemek istedigimiz dosyalari ekleriz.)
+
+git add . (tek seferde butun degisiklikleri stagelemek icin kullanilir.)
+
+git commit -m "Comment of commit" (yorumu ile comit etmek icin kullaniriz)
+
+git commit -a -m "comment" (add all stages and commit with comment)
+	
+git config --global core.editor "code --wait" (commenti gitbashten vscode'a cektik comment girildikten sonra vs kapaldigi an comit isleme alinir)
+
+git branch (branchleri gosterir, uzerinde olunan branchi "*" ile isaretler)
+
+git branch -v (branchleri daha detayli gosterir)
+
+git branch <branch-name>  (son commit ustune yeni branch acar)
+
+git switch <branch-name> (acilan branche gecmek icin kullanilir)
+
+git checkout <branch-name> (ilgili branchi incelemek icin kullanilir)
+
+git switch  -c <branch-name> (yeni branch acar ve ona gecis yapar)
+
+git switch -D <branch-name> (master uzerindeyken baska branchi force ile siler)
+
+git switch - (Bir onceki gelinen branche doner)
+
+git branch -m <new-branch-name> (ilgili branche switch edildikten sonra o bracnhin adini degistirmek icin kullanilir
+
+git merge <branch-name> (ana branche eklenmesiniz istedigimiz branch uzerinde diger branchin adiyla cagiririz.)
+
+git diff (file icinde yapilan degisikleri gormek icin kullanilri)
+
+git diff HEAD (yeni file eklendigin olan file uzerinde degisiklik olmadigi icin git diff'te gorunmez ancak git diff HEAD ile butun degisiklikleri goruntuleyeiblrisin)
+
+git diff --staged (git diff --staged / --cached ile commit yaptiginda nelerin degisicegini gorebilirsin)
+
+git diff HEAD [filename] / git diff --staged [filename] (belli bir dosyada nelerin degistigini gorebilirsin)
+
+git diff branch1..branch2 (iki branch arasindaki degisiklikleri gorebilirsin)
+
+git diff commit1..commit2 (commit keylerini koyarak iki commit arasindaki farki gorebilirsin)
+
+git stash / git stash save (branch degistirirken commit edilmeyen degisiklikleri tutmak icin kullanilir)
+
+git stash pop (stashlenen degisiklikleri baska branche gidip geldikten sonra geri cagirmak icin kullanilir)
+
+git stash apply (pop ile stashteki degisiklikler remove edilir. ancak apply ile bu degisikller silinmez. farkli branchlerde de bu degisiklikleri cagirabilirsin)
+
+git stash apply stash@{2} (belli bir stashlenen degisikligi uygulamak icin kullanilir)
+
+git stash list (stashlenen degisiklikleri stashlenme sirasina gore gosterir)
+
+git stash drop stash@{2} ( stashlenen 2. siradaki degisikligi silmek icin kullanilir)
+
+git stash clear (butun degisiklikleri siler)
+
+git checkout [commithash] ( projenin onceki committeki haline geri donmek icin kullanilir. HEAD pointi ilgili commite gonderir. HEAD'in oldugu yerden yeni branch acilabilir.)
+
+git checkout HEAD~1 (HEAD'in bulundugu committin bir onceki commit'ine yani parent commitine gider, HEAD~2, HEAD~3..
+
+git checkout HEAD <filename> (fileda degisiklik yaptin ama commit almadin head ile son commitin oldugu file halini goruntuleye bilirsin) 
+
+git cheackout -- <file> (filedaki HEAD'in oldugu committen sonra yapilan degisiklikleri discard eder)
+
+git switch - (son birakilan commite doner.)
+
+cat .git/HEAD (HEAD'in oldugu commithash'i getirir)
+
+git restore <file-name> ()
+
+git restore --source HEAD~1 <file-name> (file'i belirtilen HEAD1 committindeki haline ceker)
+
+git restore --stages <file-name> ( git add ile stageledigimiz file'i stage'den cikarir)
+
+git reset <commithash> (mastere 2 commit atigin bir noktada aslinda bu 2 committin farkli bir branchte olmasini istediginde kullanilir. sadece commitleri siler. sonrasinda yeni commit atarak hatalari ayiklayarak ilerleyebilirsin) 
+
+git reset --hard <commithash> ( yapilan degisiklikleri yok sayarak projeyi donmek istedigin commite getirir hatali committeki butun degisiklikleri kaybedersin.) 
+
+git revert <commithash> (hatali bir commit attin proje degistirdin projeyi belirlediigin bir committeki haline geri dondurecek sekilde yeni comit attar ve hatali halide bir onceki comitte galmis olur) 
+
+GİTHUB====================
+
+git clone <URL> (public github repolarini klonlamak icin kullanilir.)
+
+git remote -v (local reponun remote nreye bagli oldugunu gosterir)
+
+git remote add <name> <url> (locali hub'a baglamak icin kullanilir.)
+
+git remote rename <old-name> <new-name>
+
+git push <remote> <branch> (hangi repoya pushlamak istiyorsun ve bu reponun hangi branchine pushlanmasini istiyorsun. remote add yaptiktan sonra bunu yapiyorsun)
+
+git push <remote> <local-branch>:<remote-branch> (localde calistigin bir  branchi hub'taki master'a ya da baska bir branche pushlamak icin kullanilir)
+
+git push -u <remote> <branch> (UPSTREAM: yerel subeyi belirtilen uzak depoya gonderir ve ayni zamanda sube izleme ozelligini etkinlestirir gelecekte git pull veya git push komutu calistirildiginda Git, otomatik olarak hangi uzak subeyle iliskilendirilecegini bilecektir)
+
+git branch -r ( yerelde bir kopyasini bulundurdugumuz uzak depodaki branchleri takip etmek icin kullanilir. Bu subeleri yereldeki subeler gibi inceleyebilir, degisikliklerini goruntuleyebilir ve cekebiliriz. git branch -r komutunu calistirdiginizda, bu uzak takip subelerinin bir listesi goruntulenir.)
+
+git checkout <remote>/<branch> (localde calisirken remote HEAD geride kalir, remote'taki commit'i kontrol etmek icin kullanilir)
+
+git switch <remote-branch-name> (branch localde goruntulemek icin kullanilir)
+
+git fetch <remote-repo> (remote repoyu kopyalar ancak workingspace'e cekmez. Yani localdeki calisma oldugu gibi kalir ama repodaki degisiklikler local repoya cekilmis olur)
+
+git pull <remote> <branch> 
+
+git pull (localde headin oldugu branchi remote'taki kaynak branchten gunceller.)
+
+git rebase <master-branch> (oldugun branchi mastera rebase eder)
+
+git rebase --contunie ( conflict aldigin rebase isleminde conflictleri cozdukten sonra bu komut ile islemi devam ettirebilirsin)
+
+git tag (repoda kullanilar taglari gosterir, bunlar semantic versiyonlama taglari olabilir)
+
+git tag -l "*format*" (repoda istenilen formattaki taglari getirir. orn: "*v17.*"
+
+git diff <tag1> <tag2> (versionlar arasindaki farkliliklari gozlemlemek icin kullanilir.)
+
+git tag <tagname> (lightweight tag olusturmak icin kullanilir.)
+
+git tag -a <tagname> (editor acar ve tag'e yorum eklemeyi saglar.)
+
+git show <tagname> (aratilantagi gormek icin kullanilir.)
+
+git tag <tagname> <commithash> -f (kullandigin bir tagi baska commit uzerine almak isteken -f force kullanmak gerekir)
+
+git tag -d <tagname> (olusturulmus tagi silmek icin kullanilir.)
+
+git push <branchname> --tags (tagleri remote repoya pushlamak icin kullanilir)
+
+git hash-object <file> (dosyayi hashlemek icin kullanlinir)
+
+echo "string" | git-hash-object --stdin (verilen string hashlemek icin kullanilir.)
+
+git cat-file <git-hash-code> (hash'i objeye cevirmek icin kullanilir)
+
+git reflog show HEAD@{2.days.ago} (belirtilen zamana kadar refloglari getirir)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

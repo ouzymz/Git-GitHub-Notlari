@@ -1,0 +1,272 @@
+--Git, surum kontrol sistemi olarak bilinen ve bazen VCS olarak kisaltilan bir sistemdir.
+
+--ozetle, surum kontrolu, bir dosya kumesinde yapilan degisiklikleri zaman icinde takip etmeye ve yonetmeye yardimci olan yazilimdir.
+
+--Eger bir seyleri bozarsak, onceki bir surume geri donebiliriz.
+
+--Farkli surumler arasindaki degisiklikleri, farkli dosyalar arasindaki degisiklikleri, farkli isbirlikciler arasindaki degisiklikleri birlestirebiliriz.
+
+--Ve belki de en onemlisi, isbirligi yapabilir ve degisiklikleri paylasabiliriz. Git, kullanicilar arasinda isbirligini kolaylastirir.
+
+--developerlar, akademisyenler, hatta bazi yazarlar bile github'i ortak gelistirdikleri projelerde kullanir bkz. https://stackshare.io/git
+https://government.github.com/community/
+https://github.com/HoTT/book
+
+
+--Git ve GitHub arasindaki fark. Birbirleriyle yakindan iliskilidir, ancak ayni sey degillerdir.
+
+--Git: Git, bahsettigimiz gibi bir surum kontrol yazilimidir.
+
+Birinin makinesinde calisir, benim dizustu bilgisayarimda, sizin masaustunuzde veya nerede olursa olsun, insanlarin bilgisayarlarinda calisir. Bir hesap icin kaydolmaniza gerek yoktur.
+
+--GitHub ise bir web hizmettir. Ve yapisi geregi Git depolarini alir.
+
+
+--ozetle, Git yerelde calisirken, GitHub projeleri bulutta paylasir ve isbirligi yapma olanagi sunar. Bu kurs, once Git'i ogretir ve daha sonra GitHub kullanimini kapsar.
+
+--Common early mistake;
+Herhangi bir dosya ve klasor ve degisiklikler, git'in takip ettigi bir projedeki bu dizin icinde gerceklestirildiginde, git bunlari izleyecek ve degisiklik gecmisine kaydedecektir.
+
+Bir repo icinde var olan bir baska repo olusturmak istemeyiz. Uyari isareti yaparak bunu netlestirmek istedim. Repository'lerimizi ayri tutmak istiyoruz ve mevcut bir repository icinde git init komutunu calistirmaktan kacinmaliyiz. Her ne kadar bu dunyanin sonu olmasa da, bazi noktalarda isler ters gidebilir. Git, bir dizinde olup biten her seyi izledigi icin, bu dizinlerden birinde git zaten baslatildiysa, git git'i izliyor gibi bir durum ortaya cikar ve isler karmasiklasir.
+
+
+--Commitleri atomik seviyede tutmak onemli. Her commit yapilan 1 konsept icin olmali. Her degisilik gibi degil ancak o konsepte yapilan bir degisiklik icin commit atilmali.
+
+
+
+Branch: 
+
+--Bu metinde Git'in temel isleyisi ve "branching" konsepti aciklaniyor. Git'te yapilan her commit bir benzersiz karma ile birlikte gelir ve her commit bir onceki commit'e referans verir, boylece lineer bir gecmis olusur. Ancak gercek projelerde birden fazla baglamda calismak gerekebilir ve farkli islerin izole bir sekilde yapilmasi onemlidir. İste bu noktada "branching" devreye girer. branchler, alternatif zaman cizelgeleri gibi dusunulebilir ve farkli baglamlarda calismayi saglar. branchlerin birlestirilmesi de yani "merge" islemi, degisikliklerin diger branchlerle birlestirilmesi anlamina gelir, ancak bunun zamanlamasi ve uygunlugu kullanici tarafindan belirlenir. Bu sekilde, ekipler ayni anda farkli baglamlarda calisabilir ve degisiklikleri uygun zamanda birlestirebilir.
+
+--bracnhler arasinda gecis yaparken eger conflct yoksa direkt yapabilir ancak cakisma conflict varsa error verir.
+
+-- cd .git >> ls >> cat HEAD >> 
+
+Merging:
+
+-- branchler, farkli ozellikler veya degisiklikler uzerinde bagimsiz olarak calismamiza olanak tanir. Her ozellik icin ayri bir branch olusturabilir ve bu ozelligi gelistirirken tum degisiklikleri o branchde yapabiliriz.
+
+Tipik bir calisma akisinda, ana branch (genellikle "master" veya "main" olarak adlandirilir) stabil bir surumu temsil eder ve dogrudan uzerinde deneyler yapmaktan kacinilir. Bunun yerine, yeni ozellikleri veya duzeltmeleri branchlerde gelistiririz.
+
+Birlestirme, bir branchdeki degisiklikleri baska bir branchye eklemek icin kullanilir. ozellikler veya duzeltmeler tamamlandiginda, ilgili branch "master" veya ana branchye birlestirilir.
+
+"Git Merge" komutu, degisiklikleri bir branchden digerine birlestirmek icin kullanilir. Mevcut branchye gore diger branch icindeki degisiklikleri alir.
+
+"Hizli Birlestirme" adi verilen birlestirme turu, diger branchde yeni taahhutler yoksa ve sadece ilgili branchnin ileri gitmesi gerekiyorsa kullanilir. Bu durumda, degisiklikler sadece ilgili branchye eklenir.
+
+Diger birlestirme turleri, iki branch arasinda cakisan veya celisen degisiklikler oldugunda daha karmasik birlestirme senaryolarini ele alir.
+
+
+diff yorumlama: 
+
+-- --- ile gosterilen filede cikanlari belirtir. +++ ile gosterilen eklenenleri @@ -3,+4 - +3,+5@@ ile gosterin satir numaralari hangi satirlar cikti hangileri eklendi onu belirtir.
+
+
+git stash: 
+
+-- "Git stash" komutunun cozdugu sorun sudur: Kaydedilmemis degisikliklerin oldugu bir daldayken baska bir dala gecis yapmak istedigimizde, bu degisiklikler ya hedef dala gelir ya da Git gecise izin vermez, cunku cakisma olabilir.
+İki senaryo vardir: Degisiklikleri kaydetmemissek, degisiklikler hedef dalimiza gelir; degisiklikleri kaydedip diger dala gectikten sonra, degisiklikler gelmez.
+Git stash, kaydedilmemis degisiklikleri gecici olarak kaydedip ileride geri almak icin kullanilir.
+Video, basit bir HTML ve CSS dosyasi uzerinde "git stash" komutunun nasil kullanilacagini gosterir.
+
+github: 
+
+--GitHub, Git depolarini barindiran ve isbirligi yapmayi saglayan bir bulut tabanli platformdur. Kullanicilar, Git depolarini GitHub'a yukleyerek calismalarini yedekleyebilir, her yerden erisebilir ve baskalariyla kolayca paylasabilirler. GitHub, proje katilimcilari arasinda isbirligini kolaylastirir ve depo uzerinde tartisma ve degerlendirme yapilmasina olanak tanir. Acik kaynakli projeler icin ucretsiz kullanim sunar ve dunya genelinde buyuk bir kullanici kitlesine sahiptir.
+
+--ozetle, GitHub isbirligini kolaylastirmanin yani sira acik kaynak projelerine katilmak, is aramak, profesyonel baglantilar kurmak ve guncel kalmak icin onemli bir platformdur.
+
+--Gitclone: "git clone" komutunun ne oldugunu ve nasil kullanildigini ogreniyoruz. "git clone", uzak depolardaki (remote repositories) bir projeyi bilgisayarimiza indirmemizi saglayan onemli bir komuttur. GitHub gibi hizmetlerden alinan URL'lerle kullanilir ve projenin tum gecmisini ve dosyalarini bilgisayarimiza kopyalar. ozellikle acik kaynak projelerine katkida bulunmak veya projeleri incelemek isteyenler icin cok onemlidir. "git clone" komutunu kullanarak baskalarinin calismalarini kendi bilgisayarimizda deneyimleyebilir ve projelere katkida bulunabiliriz. Bu komut sayesinde git deposuna tam erisim elde ederiz ve projenin tam gecmisini gorebiliriz. "git clone", GitHub'a ozgu bir komut degildir ve Git'in temel komutlarindan biridir.
+
+--Varsayilan olarak, GitHub'dan klonladigimizda uzak adi "origin" ve ana dal adi "main" veya "master" olur. Uzak takip subeleri, GitHub ile iletisim kurdugumuzda, uzak depodaki degisiklikleri yerel depomuza cekmek icin kullanilir.
+
+--git push <remote> <branch>: Bu komut, yereldeki mevcut subeyi belirtilen uzak depoya gonderir. subeyi gondermek istediginiz uzak depoyu ve gondermek istediginiz yerel subeyi belirtmelisiniz. ornegin, git push origin main komutu, yereldeki "main" subesini "origin" adli uzak depoya gonderir.
+
+git push <remote> <local-branch>:<remote-branch>: Bu komut, belirtilen yerel subeyi belirtilen uzak subeye gonderir. Bu, yerel subeyi farkli bir isimle uzak subeye aktarmak icin kullanilabilir. ornegin, git push origin feature:feature_branch komutu, yereldeki "feature" subesini "origin" adli uzak depodaki "feature_branch" subesine gonderir.
+
+Bu farkli push yontemleri, cesitli senaryolarda kullanisli olabilir. İlk komut, yerel subenin adinin ayni oldugu bir uzak depoya gondermek icin kullanilirken, ikinci komut, yerel subenin farkli bir isimle uzak bir subeye gonderilmesi gerektiginde kullanilir.
+
+--git push <remote> <branch>: Bu komut, yereldeki mevcut subeyi belirtilen uzak depoya gonderir. Ancak, bu sekilde yapilan gonderme, sube izleme (branch tracking) ozelligini etkinlestirmez. Bu nedenle, bir sonraki kez git pull veya git push komutu calistirildiginda, Git, hangi uzak subeye baglanacagini bilmeyecektir ve ek parametrelerin eklenmesi gerekebilir.
+
+git push -u <remote> <branch> veya git push --set-upstream <remote> <branch>: Bu komut, yerel subeyi belirtilen uzak depoya gonderir ve ayni zamanda sube izleme ozelligini etkinlestirir. -u bayragi, yerel sube ile uzak sube arasindaki izleme baglantisini olusturur. Bu sayede, gelecekte git pull veya git push komutu calistirildiginda Git, otomatik olarak hangi uzak subeyle iliskilendirilecegini bilecektir.
+
+Genellikle, ilk kez bir subeyi uzak depoya gonderirken ve daha sonra bu subeyi izlemek istiyorsaniz, -u bayragini kullanmaniz onerilir. Bu sekilde, izleme baglantisi otomatik olarak olusturulur ve daha sonra yapilan islemler daha kolay ve hizli bir sekilde gerceklestirilebilir.
+
+-- remote branchlerde calisirken "git branch -r" remote branch listesini ulasilir. "git switch <remote-branch-name>" komutu ile uzaktaki branch uzerinde localde calisilablir.
+
+
+Pull/Fetch : 
+
+--Genel olarak, "git fetch" komutu guncellemeleri indirir, ancak yerel calisma kopyasini degistirmezken, "git pull" komutu guncellemeleri indirir ve yerel calisma kopyasini otomatik olarak gunceller. "git pull" komutu, daha hizli ve kolay bir guncelleme islemi saglar, ancak dikkatli kullanilmalidir, cunku yerel degisikliklerinizle cakisma durumlarina neden olabilir. Eger cakismalar olursa, git size uygun bir cozum sunacaktir ve bu durumu duzeltmenize yardimci olacaktir.
+
+
+
+
+
+Private/Public Repo: 
+
+--private repo, gizlilik ve sinirli erisim saglayan ozel bir depo iken public repo, herkesin erisimine acik ve ucretsiz olarak goruntuleyebilecegi bir depodur. Projelerinizin dogasina ve gelistirme gereksinimlerinize bagli olarak, private veya public repo secimini yapabilirsiniz.
+
+
+Collabrator: 
+
+Belirli bir GitHub deposunda yonetici veya sahibi tarafindan davet edilmis ve depo uzerinde duzenleme, yukleme veya diger islemleri yapma izni verilen kullanicidir. Yani, collaboratorler, depoya projeye katkida bulunma yetkisine sahip ek uyelerdir. 
+
+README:
+--Bir GitHub deposunun kok dizininde bulunan metin dosyasidir. Projenin aciklamasini, kullanim talimatlarini ve diger onemli bilgileri icerir. Genellikle Markdown formatinda yazilir ve projenin ana sayfasinda gosterilir. README, projeye gelen ziyaretcilere hizli bir genel bakis saglar ve projenin tanitiminda, belgelerin paylasiminda ve topluluk katilimini tesvik etmede onemli bir rol oynar.
+
+README Formati: 
+
+Baslik: Baslik, projenin adini veya kisa bir aciklamasini iceren bir baslikla baslamalidir.
+
+Aciklama: Projeyi detayli bir sekilde aciklayan bir bolum olmalidir. Projeye neyin dahil oldugu, amaci, islevselligi ve kullanim senaryolari burada belirtilmelidir.
+
+Kurulum Talimatlari: Projeyi yerel bilgisayariniza kurmak icin gerekli adimlari aciklayan bir bolum olmalidir. Gerekli bagimliliklarin nasil yuklenecegi, kurulum komutlari ve gerektiginde ornekler burada verilmelidir.
+
+Kullanim: Projeyi nasil kullanacaginizi anlatan bir bolum olmalidir. Komutlar, parametreler ve ornekler saglanabilir.
+
+Katkilar: Proje icin katkida bulunmak isteyen diger gelistiricilere nasil yardim edebileceklerini belirten bir bolum olmalidir. Pull request'ler, kod incelemeleri ve diger katki surecleri burada aciklanmalidir.
+
+Lisans: Projeyi nasil lisansladiginizi belirten bir bolum olmalidir. Lisans turu ve gereklilikler acikca ifade edilmelidir.
+
+İletisim Bilgileri: Gelistirici veya projenin sahibi ile iletisime gecmek isteyenler icin iletisim bilgileri burada verilebilir.
+
+
+GitHub Gist:
+
+Basit ve hizli bir kod ve icerik paylasim platformudur. Kisa kod parcaciklarini, metin belgelerini ve diger kucuk dosyalari paylasmak icin kullanilir. Gistler, renklendirilmis kod ve versiyon kontrolu ile kullanici dostu bir arayuze sahiptir. Paylasim ve gomme ozellikleri sayesinde kolayca digerlerine ulastirilabilir. Ayrica, istege bagli olarak gizli veya genel olarak ayarlanabilir. Gelistiricilerin kod orneklerini paylasmak, dokumantasyon olusturmak veya yardim almak icin sikca kullanilir.
+
+
+
+GitHub Pages:
+
+GitHub kullanicilarinin ucretsiz olarak statik web sitelerini olusturup barindirabilecegi bir hizmettir. Kullanicilar, HTML, CSS ve JavaScript dosyalarini kullanarak basit web siteleri olusturabilir ve projelerini duzenli ve erisilebilir bir sekilde sunabilirler. Bu sayede gelistiriciler, dokumantasyonlarini, kisisel portfolyolarini, bloglarini ve diger statik icerikleri kolayca paylasabilirler. GitHub Pages, kullanicilarin GitHub hesaplarina entegre oldugu icin projelerini guncellerken kodlariyla birlikte web sitelerini de guncellemeleri pratik ve kolaydir.
+
+
+GitHub Repository Olusturma: İlk adim olarak, GitHub'da bir hesabiniz yoksa bir tane olusturun. Sonrasinda, yeni bir GitHub repository (repo) olusturun.
+
+Repo Ayarlari: Olusturdugunuz repository'e gidin ve sag ust kosedeki "Settings" (Ayarlar) sekmesine tiklayin.
+
+GitHub Pages Ayarlari: Ayarlar sayfasinda, sayfanin yayinlanacagi kaynak dali secenegini bulun. Eger sadece "main" ya da "master" gibi ana dali kullanacaksaniz, bunu secebilirsiniz. Eger farkli bir dal kullanmak istiyorsaniz, o dala ait "gh-pages" gibi bir dal olusturup, onu secebilirsiniz.
+
+Yayinlama Yolu: Daha sonra, yayinlanacak dosyalarin bulundugu klasor yolunu belirtmeniz gerekir. Eger proje kok dizininde ise, "/" olarak belirtebilirsiniz.
+
+Tema Secimi (Opsiyonel): GitHub Pages icin bir tema secmek istiyorsaniz, bu secenegi kullanabilirsiniz. Tema secmek zorunlu degildir, kendi tasariminizi olusturabilirsiniz.
+
+Yayinlama İslemi: Ayarlarinizi kaydettikten sonra, GitHub Pages otomatik olarak web sitenizi olusturacak ve yayinlayacaktir. Eger projenizin icinde "index.html" dosyasi varsa, bu dosya otomatik olarak ana sayfa olarak yayinlanir.
+
+Erisim: GitHub Pages ile olusturulan web sitenize "https://kullaniciadi.github.io/repositoryadi" adresinden erisebilirsiniz. Burada "kullaniciadi" GitHub kullanici adinizi, "repositoryadi" ise olusturdugunuz repository adini temsil eder.
+
+
+
+Centralized Workflow: 
+
+--Bu yaklasim, tum ekip uyelerinin ayni dalda (genellikle "master" veya "main" dali) calistigi ve islerini GitHub'da paylasmak icin digerlerinin degisikliklerini almak zorunda oldugu basit bir isbirligi yontemidir. Merkezi calisma akisinda herkesin ayni dalda calismasi ve surekli olarak dali guncellemesi, zaman zaman catisma ve sorunlara yol acabilir. Ayrica, deneyler yapmak ve isbirligi yapmak zordur cunku eksik veya hatali kodu ana dalda paylasmak zorunda kalirlar. Bu nedenle, daha karmasik ve verimli isbirligi yontemlerine gecmek genellikle daha iyi bir secenektir.
+
+
+Feature Branch Workflow: 
+
+--Tum gelistirme islerinin ana dal yerine ayri dallarda yapilmasini saglayan bir isbirligi yontemidir. Ana dal (master veya main) resmi projenin gecmisi olarak kabul edilir ve dogrudan uzerinde calisilmaz. Her ozellik veya hata duzeltme ayri bir dalda yapilir ve is tamamlandiginda ana dala birlestirilir. Bu yaklasim, birden fazla takim uyesinin ayni anda calismasina izin verir ve ana dalin stabilitesini korur. Ayrica, herkesin ana dala bozuk veya eksik kodlari aninda eklemesi sorununu ortadan kaldirir. Bu sekilde, ana dal her zaman calisir ve proje gecmisi temiz ve islevseldir.
+
+Dal Olusturma: Yeni bir ozellik veya hata duzeltmesi uzerinde calismaya basladiginda, gelistirici ana daldan yeni bir dal olusturur. Bu dal, belirli bir ozellik veya hata duzeltmesi ile ilgili tum degisiklikleri icerir.
+
+Dal uzerinde calisma: Gelistirici, tum gerekli kod degisikliklerini yapar ve bunlari ozellik dalina kaydeder. İsbirligi yapmak veya calismalarini yedeklemek icin bu dali GitHub'a gonderebilir.
+
+İsbirligi ve İnceleme: Ayni ozelligi calisan birden fazla gelistirici varsa, ozellik dali uzerinde isbirligi yapabilir ve degisiklikleri paylasabilirler. Ekip, kod degisikliklerini gozden gecirebilir, geri bildirim saglayabilir ve daha fazla iyilestirme yapabilir.
+
+Test: Gelistiriciler, ana daldaki istikrari etkilemeden ozellik dalini bagimsiz olarak test edebilir. Bu, degisikliklerin beklenildigi gibi calistigindan ve herhangi bir hatayi tanitmadigindan emin olmalarina olanak tanir.
+
+Ana Dala Birlestirme: ozellik tamamlandiginda ve test edildiginde, gelistirici, ozellik dalini ana dala birlestirmek icin bir birlestirme istegi (pull request) olusturur. Birlestirme istegi, degisikliklerin proje standartlarina ve gereksinimlerine uygun oldugundan emin olmak icin diger ekip uyeleri tarafindan incelenir.
+
+Birlestirme ve Yayinlama: Birlestirme istegi onaylandiktan sonra, ozellik dali ana dala birlestirilir. Degisiklikler artik resmi proje gecmisinin bir parcasidir. Projenin dagitim surecine bagli olarak, degisiklikler otomatik olarak uretime yayinlanabilir veya gelecekteki surumler icin sahnede olabilir.
+
+
+--Gelistiricilerin ana dal (master veya main) yerine, ozellikleri veya hata duzeltmelerini ayri dallarda gelistirdigi bir isbirligi yontemidir. Bu yontem, ana dalin duzenli ve saglam kalmasini saglar ve birlestirme surecini daha etkili hale getirir. ozellik dali is akisinda, degisiklikler once tartisilir veya "pull request" (cekme istegi) olusturularak diger ekip uyelerinin onayi alinir. Bu sekilde, gelistiriciler daha verimli bir sekilde calisabilir ve projenin istikrari korunmus olur.
+
+Feature Branch Workflow Adimlari>>>
+
+1-Branch acilir locale cekilir
+2-Localde tamamlanan task remote'a pushlanir
+3-Pull request atilir. 
+4-Takim tarafindan request kontrol edilir ve uygunsa main/master branche merge edilir.
+
+
+
+Fork & Clone Workflow (catal & Klonlama Akisi):
+
+Acik kaynak projelerine katkida bulunmak icin yaygin olarak kullanilan bir is akisidir. Bu is akisi, projeye dogrudan erisim izninizin olmadigi durumlarda projeyi kendi hesabiniza catal (fork) ederek (kopyalayarak) baslar. Ardindan catalinizi klonlayarak (local bilgisayariniza kopyalayarak) uzerinde calisabilir ve degisiklikler yapabilirsiniz. Daha sonra bu degisiklikleri pull request (birlestirme istegi) gondererek orijinal projeye katkida bulunabilirsiniz.
+
+
+Rebase:
+
+-- Rebase, merge isleminin bir alternatifi olarak kullanilan bir komuttur ve git kullanicilari arasinda rebase'i surekli kullananlar ve ondan kacinanlar seklinde iki grupta ayrilir. Rebase'i kullanmadan da Git islemleri basariyla yapilabilir, ancak bazi durumlarda oldukca faydali olabilir. Rebase'in ikinci kullanim senaryosu, kendi commit gecmisini duzenleme ve temizleme islemleri icindir. Bu bolumde, rebase ve merge islemlerinin nasil yapildigina ve ne zaman kullanilacagina odaklanacagiz.
+
+--Rebase islemi yaparken dikkat edilmesi gereken onemli bir kural vardir: Baskalariyla paylasilan branch'leri rebase etmek yerine, sadece kendi branch'inizi rebase etmelisiniz. Baskalarinin branch'lerini rebase etmek, commit gecmisinde karisikliga ve karmasikliga yol acabilir ve catismalara neden olabilir. Bu nedenle, ortak kullanilan bir branch uzerinde calisirken rebase yerine merge islemi tercih edilmelidir. Rebase, yalnizca kendi ozel branch'lerinizi duzenlemek ve temizlemek icin kullanilmalidir.
+
+--ortak main master gibi branchlere rebase yapmak mantiksiz. Kendi calistigin branch uzerinden dallanmalar arttiysa bunu  akisi lineerlestirmek icin rebase kullanilabilir.
+
+Git Tagler:
+
+--Git taglari, belirli commitlere adlandirilmis etiketler eklememizi saglar. Bu etiketler, surum numaralandirmasi ve projenin onemli anlarini isaretlemek icin kullanilabilir. İki tur tag vardir: hafif taglar sadece adlandirma yaparken, aciklamali taglar ek bilgi icerir.
+
+
+Semantic Versioning:
+
+--yazilim projelerinde surum numaralandirma sistemidir. Bu sistemde surum numaralari su formatta yazilir: "MAJOR.MINOR.PATCH".
+
+"MAJOR" surumu, geriye donuk uyumsuz degisiklikler yapildiginda artar.
+"MINOR" surumu, geriye donuk uyumlu yeni ozellikler eklendiginde artar.
+"PATCH" surumu, geriye donuk uyumlu hata duzeltmeleri yapildiginda artar.
+
+"MAJOR" surumu 1'dir: Uyumsuz degisiklikler yapildiginda (ornegin, API degisiklikleri) bu surum artar. ornegin, bir sonraki buyuk surumu 2.0.0 olabilir.
+"MINOR" surumu 2'dir: Geriye donuk uyumlu yeni ozellikler eklediginizde bu surum artar. ornegin, bir sonraki surumu 1.3.0 olabilir.
+"PATCH" surumu 3'tur: Geriye donuk uyumlu hata duzeltmeleri yaptiginizda bu surum artar. ornegin, bir sonraki surumu 1.2.4 olabilir.
+Eger API'de geriye donuk uyumsuz bir degisiklik yaparsaniz, surum numaralarini su sekilde guncellemelisiniz:
+
+1.2.3 -> 2.0.0
+
+
+.git Klasoru: 
+
+--Git deposunun arkasindaki calisma alanini ve yapilandirmasini iceren bir klasordur. Bu klasordeki en onemli dosyalardan biri "config" dosyasidir. Bu dosya, belirli depo yapilandirmalarini icerir. Yapilandirmalar, depo bazinda yapilabilecegi gibi global veya sistem duzeyinde de yapilabilmektedir. Bu dosya araciligiyla Git'in davranisini ve renk ayarlarini degistirebilir veya ozel Git komutlari (Git aliaslari) ekleyebilirsiniz. Ancak yapilandirmalari duzenlerken dikkatli olmalisiniz, cunku yanlis yapilandirmalar projenizi ve Git davranisinizi olumsuz etkileyebilir.
+
+
+
+refs Klasoru: 
+
+--.git klasorunun "refs" (referanslar) bolumu, Git'in tum isaretcileri ve referanslari sakladigi kritik bir kisimdir. Bu bolumde "heads" alt klasoru, her bir dal icin bir dosya icerir ve bu dosyalarda ilgili dala isaret eden commit hash'leri (isaretciler) bulunur. Ayni sekilde, "tags" alt klasoru etiketleri saklar, "remote" alt klasoru ise uzak depolardaki dallara yonelik isaretcileri icerir. Bu yapi sayesinde, Git belirli dallara ve etiketlere erisebilir ve kod durumunu izleyebilir.
+
+objects Klasoru: 
+
+--"objects" klasoru, Git'in cekirdegini olusturan ve tum verilerin depolandigi kritik bir bolumdur. Bu klasorde "commits", "trees", "blobs" ve "annotated tags" olmak uzere dort temel Git nesnesi bulunur. Bu nesneler, Git'in surum kontrolu icin kullandigi tum verileri icerir. Veriler, kucultulmus ve sifrelenmis ikili dosyalar olarak saklanir ve kullanicilar tarafindan dogrudan goruntulenemez. Git, bu verileri benzersiz sekilde tanimlamak icin karma fonksiyonlari ve karmasik kimlik degerleri (hash) kullanir. Bu sayede tum islemler guvenli bir sekilde gerceklestirilir.
+
+
+reflog : 
+
+
+-- "git reflog" komutu, basvuru guncelleme gecmisini gosteren kayitlari (reflog) listelemek icin kullanilir. Basvurular, git'in isaretcileridir ve ornegin, branch basvurulari veya "HEAD" basvurusu gibi farkli turleri vardir.
+
+"git reflog" komutu, basvurularin gecmis degisikliklerini gosterir ve her bir degisiklik islemi icin bir giris icerir. Bu, basvurularin bir daldan digerine gecisleri veya commit noktalarina tasinmasi gibi degisiklikleri icerir.
+
+Reflog kayitlari, git reposunda yanlislikla yapilan islemleri geri almak veya kaybolmus commit'lere ulasmak gibi durumlarda oldukca yararli olabilir.
+
+-- git cleans out old entries after around 90 days.
+
+[ALIAS]: 
+
+--git status ::> alias is s = status yapilarak, git s olarak cqgirilabilir. "cm = commit -m" olarak duzenlenip" git cm == git commit -m" olacak hale getirilebilir.
+
+ise yarar alias:::>
+
+https://github.com/GitAlias/gitalias
+https://www.durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+https://gist.github.com/mwhite/6887990
+
+
+
+
+
+
+
+
+
+
